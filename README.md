@@ -1,42 +1,39 @@
-Qmanage • Full-Stack Food Ordering Platform
-Qmanage has evolved from a static site into a full-stack Node.js + Express application with EJS templating, MongoDB persistence, and rich, data-driven interactivity on the frontend.
+# Qmanage • Full-Stack Food Ordering Platform
 
-🍽️ Highlights
-Server-rendered EJS views with reusable layout and partials
-Node.js + Express + MongoDB backend with clean /routes · /controllers · /models architecture
-Full CRUD APIs for Outlets, Menu Items, and Orders
-Admin console (EJS + vanilla JS) for managing outlets, menu inventory, and live orders
-Dynamic pages powered by JSON & APIs for menu and outlets listings
-Rich frontend OOP (Cart, FoodItem, Outlet classes) with filters, modals, and animations
-Nodemon-powered DX and environment-driven Mongo connection
-🚀 Getting Started
-1. Prerequisites
-Node.js 18+
-MongoDB instance (local or hosted)
-MongoDB Setup (Windows)
-If you're running MongoDB locally on Windows, you need to create the data directory:
+Qmanage is a full-stack **food ordering and management platform** built with **Node.js, Express, EJS, and MongoDB**.  
+It has evolved from a static frontend into a server-rendered, data-driven web application with a modular backend and rich frontend interactivity.
 
-# Create the default MongoDB data directory
-New-Item -ItemType Directory -Force -Path "C:\data\db"
-Alternatively, you can start MongoDB with a custom data path:
+The project demonstrates real-world full-stack concepts including MVC architecture, RESTful APIs, server-side rendering, and dynamic frontend behavior.
 
-mongod --dbpath "C:\path\to\your\data\directory"
-2. Install & Run
-git clone https://github.com/parthbansal6482/Qmanage-.git
-cd Qmanage-
-npm install
+---
 
-# development (nodemon)
-npm run dev
+## 🍽️ Highlights
 
-# production
-npm start
-Create a .env (optional) to override defaults:
+- Server-rendered **EJS views** with reusable layouts and partials  
+- **Node.js + Express + MongoDB** backend using clean MVC architecture  
+  (`/routes · /controllers · /models`)
+- Full **CRUD APIs** for:
+  - Outlets
+  - Menu Items
+  - Orders
+- Admin console (EJS + vanilla JS) for managing outlets, menus, and live orders
+- Dynamic pages powered by **JSON & REST APIs**
+- Rich frontend **OOP architecture**:
+  - `Cart`, `FoodItem`, `Outlet` classes
+  - Filters, modals, animations, and state syncing
+- Developer-friendly workflow with **Nodemon**
+- Environment-based MongoDB configuration
 
-PORT=5000
-MONGODB_URI=mongodb://127.0.0.1:27017/qmanage
-🗂️ Project Structure
-Qmanage-/
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Prerequisites
+- **Node.js** 18+
+- **MongoDB** (local or cloud-hosted)
+
+---
+Qmanage/
 ├── server.js
 ├── config/
 │   └── database.js
@@ -67,58 +64,83 @@ Qmanage-/
 │   ├── json/
 │   └── img/
 └── README.md
-🔌 API Overview
-Method	Endpoint	Description
-GET	/api/outlets	List outlets
-POST	/api/outlets	Create outlet
-PUT	/api/outlets/:id	Update outlet
-DELETE	/api/outlets/:id	Remove outlet (cascades menu)
-GET	/api/menu-items	List menu items (filters)
-POST	/api/menu-items	Create menu item
-PUT	/api/menu-items/:id	Update menu item
-DELETE	/api/menu-items/:id	Delete menu item
-GET	/api/orders	List orders (filters)
-POST	/api/orders	Create order
-PUT	/api/orders/:id	Update order body
-PATCH	/api/orders/:id/status	Update status only
-DELETE	/api/orders/:id	Delete order
-🖥️ Views & Pages
-home.ejs — hero, category slider, best/featured products
-menu.ejs — powered by JSON + API with search, filters, sorting
-outlets.ejs — outlet cards, modal info, chip filters
-orders.ejs — outlet selection wizard, category chips, cart integration
-contact.ejs — interactive form validation + newsletter
-cart.ejs — persistent cart summary powered by Cart class events
-admin/* — dashboard, outlets, menu items, orders management consoles
+
+| Method | Endpoint                 | Description                         |
+| ------ | ------------------------ | ----------------------------------- |
+| GET    | `/api/outlets`           | List outlets                        |
+| POST   | `/api/outlets`           | Create outlet                       |
+| PUT    | `/api/outlets/:id`       | Update outlet                       |
+| DELETE | `/api/outlets/:id`       | Remove outlet (cascades menu)       |
+| GET    | `/api/menu-items`        | List menu items (filters supported) |
+| POST   | `/api/menu-items`        | Create menu item                    |
+| PUT    | `/api/menu-items/:id`    | Update menu item                    |
+| DELETE | `/api/menu-items/:id`    | Delete menu item                    |
+| GET    | `/api/orders`            | List orders                         |
+| POST   | `/api/orders`            | Create order                        |
+| PUT    | `/api/orders/:id`        | Update order                        |
+| PATCH  | `/api/orders/:id/status` | Update order status                 |
+| DELETE | `/api/orders/:id`        | Delete order                        |
+
 🧠 Frontend Architecture
+
 public/js/main.js — Cart class (localStorage sync, custom events)
-public/js/home.js — FoodItem, OutletCategory, slider controller
-public/js/menu.js — MenuItemModel, menu filters & rendering
-public/js/outlets.js — OutletModel, modal controller, filters
-public/js/order.js — outlet-aware menu browsing with JSON fallback
-public/js/cart.js — CartPage syncing with Cart events
-public/js/admin/*.js — fetch-based CRUD dashboards
-public/js/data-loader.js — JSON loader with caching
-public/js/utils.js — dropdowns, animations, notifications, validators
+
+public/js/home.js — FoodItem, OutletCategory, sliders
+
+public/js/menu.js — Menu model, filters, rendering
+
+public/js/outlets.js — Outlet model, modal controllers
+
+public/js/order.js — Outlet-aware menu browsing
+
+public/js/cart.js — Cart page syncing
+
+public/js/admin/*.js — Fetch-based admin CRUD dashboards
+
+public/js/data-loader.js — API-first loader with JSON fallback
+
+public/js/utils.js — UI helpers, animations, validators
+
 🧱 Data Sources
-Static JSON lives under public/json/ for bootstrapping and offline demo:
+
+Static JSON files under public/json/ are used for bootstrapping and offline demos:
 
 restaurants.json
+
 menu-items.json
+
 best-selling.json
+
 featured-products.json
-The frontend attempts API fetch first and gracefully falls back to these JSON assets.
+
+The frontend attempts API fetch first and gracefully falls back to JSON when needed.
 
 ✅ Feature Checklist
- EJS layout + partials (layout.ejs, header, footer, navbar)
- Node.js backend with Express router/controller layers
- MongoDB models (Outlets, MenuItems, Orders) with full CRUD
- Admin panel (EJS + vanilla JS) for managing data
- JSON-driven menu & outlets pages
- Rich front-end interactivity (filters, search, modals, cart animations)
- Nodemon dev workflow (npm run dev)
+
+EJS layout & partials
+
+Express MVC backend
+
+MongoDB persistence with Mongoose
+
+RESTful CRUD APIs
+
+Admin management panel
+
+JSON + API-driven frontend
+
+Rich interactivity (filters, cart, modals)
+
+Nodemon-powered dev workflow
+
 🤝 Contributing
-Issues, ideas, and PRs are welcome. Please raise an issue before large changes so we can collaborate on direction.
+
+Issues, ideas, and pull requests are welcome.
+Please raise an issue before making large changes so we can collaborate on the project direction.
 
 📄 License
+
 MIT © Rohan Yadav
+
+```powershell
+New-Item -ItemType Directory -Force -Path "C:\data\db"
