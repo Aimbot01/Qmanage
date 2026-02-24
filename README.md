@@ -101,37 +101,6 @@ public/js/data-loader.js — API-first loader with JSON fallback
 
 public/js/utils.js — UI helpers, animations, validators
 
-🧱 Data Sources
-
-Static JSON files under public/json/ are used for bootstrapping and offline demos:
-
-restaurants.json
-
-menu-items.json
-
-best-selling.json
-
-featured-products.json
-
-The frontend attempts API fetch first and gracefully falls back to JSON when needed.
-
-✅ Feature Checklist
-
-EJS layout & partials
-
-Express MVC backend
-
-MongoDB persistence with Mongoose
-
-RESTful CRUD APIs
-
-Admin management panel
-
-JSON + API-driven frontend
-
-Rich interactivity (filters, cart, modals)
-
-Nodemon-powered dev workflow
 
 🤝 Contributing
 
@@ -142,5 +111,4 @@ Please raise an issue before making large changes so we can collaborate on the p
 
 MIT © Rohan Yadav
 
-```powershell
-New-Item -ItemType Directory -Force -Path "C:\data\db"
+
